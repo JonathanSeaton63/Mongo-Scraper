@@ -2,11 +2,11 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 
 const scrape = function(cb) {
-  axios.get("https://www.deseretnews.com/", function(err, res, body){
+  axios.get("https://www.ksl.com/", function(err, res, body){
     const $ = cheerio.load(body);
     const articles = [];
 
-    $(".main-column").each(function(i, element){
+    $("div.queue_story").each(function(i, element){
       const head = $(this).children(".title").text().trim();
       const sum = $(this).children(".summary").text().trim();
 
